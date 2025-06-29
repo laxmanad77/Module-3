@@ -1,0 +1,30 @@
+# Alarm Clock Time Calculator
+
+# Get and validate current time
+while True:
+    try:
+        current_hour = int(input("Enter the current time (0–23): "))
+        if 0 <= current_hour <= 23:
+            break
+        else:
+            print("Please enter a valid hour between 0 and 23.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+# Get and validate wait time
+while True:
+    try:
+        wait_hours = int(input("Enter the number of hours to wait for the alarm: "))
+        if wait_hours >= 0:
+            break
+        else:
+            print("Please enter a non-negative number.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+# Calculate alarm time
+alarm_time = (current_hour + wait_hours) % 24
+
+# Output the result
+print("\n--- Alarm Time ---")
+print(f"The alarm will go off at {alarm_time:02d}:00 (24-hour clock).")
